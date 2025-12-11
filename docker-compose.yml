@@ -29,6 +29,12 @@ services:
     environment:
       GF_SECURITY_ADMIN_USER: "admin"
       GF_SECURITY_ADMIN_PASSWORD: "admin"
+      # ---------------------------------------------------------
+      # 2️⃣ Tell Grafana it lives under /grafana/
+      # ---------------------------------------------------------
+      GF_SERVER_ROOT_URL: "%(protocol)s://%(domain)s/grafana/"
+      GF_SERVER_SERVE_FROM_SUB_PATH: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
     volumes:
       - grafana-data:/var/lib/grafana
       # ⚠️ DO NOT MOUNT grafana.ini (latest versions break!)
